@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>SchoolManagementSystem</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- <servlet>
+    <servlet-name>DisplayController</servlet-name>
+    <servlet-class>com.controller.DisplayController</servlet-class>
+  </servlet> -->
+  <servlet>
+    <servlet-name>StudentDisp</servlet-name>
+    <servlet-class>com.controller.StudentDisp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/bower_components/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/dist/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/js/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/less/*</url-pattern>
+  </servlet-mapping>
+  <!-- <servlet-mapping>
+    <servlet-name>DisplayController</servlet-name>
+    <url-pattern>/user/home</url-pattern>
+  </servlet-mapping> -->
+  <servlet-mapping>
+    <servlet-name>StudentDisp</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>

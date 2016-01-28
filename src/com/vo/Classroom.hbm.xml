@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.vo.Classroom">
+		<id name="id" column="id" type="int">
+			<generator class="native"></generator>
+		</id>
+
+		<list name="grade_id" cascade="save-update">
+			<key column="classroom_id"></key>
+			<list-index column="cr_idx"></list-index>
+			<one-to-many class="com.vo.Grade" />
+		</list>
+
+		<list name="teacher_id" cascade="save-update">
+			<key column="t_id"></key>
+			<list-index column="idx_teacher"></list-index>
+			<many-to-many class="com.vo.Teacher" />
+
+		</list>
+
+		<list name="student_id" cascade="save-update">
+			<key column="student_id"></key>
+			<list-index column="idx_student"></list-index>
+			<one-to-many class="com.vo.Student" />
+		</list>
+
+
+		<property name="year" column="Year2" type="string" unique="true"></property>
+		<property name="name" column="Name2" type="string" unique="true"></property>
+
+
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.vo.Exam_result">
+		<id name="id" column="id" type="int">
+			<generator class="native"></generator>
+		</id>
+			<one-to-one name="exam_id" cascade="save-update" class="com.vo.Exam"></one-to-one>
+		<property name="marks" column="Marks" type="string"></property>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.vo.Student">
+		<id name="id" column="id" type="int">
+			<generator class="native"></generator>
+		</id>
+
+		<property name="firstname" column="Firstname" type="string"></property>
+		<property name="lastname" column="Lastname" type="string"></property>
+		<property name="phone" column="phn" type="string"></property>
+		<property name="email" column="Email" type="string"></property>
+		<property name="attendance" column="Attendance" type="string"></property>
+		<property name="enrollment" column="EnrollmentNumber" type="int" unique="true"></property>
+		<property name="photo" column="Photo" type="string"></property>
+
+		<one-to-one name="parents_Id" class="com.vo.Parent"
+			cascade="save-update"></one-to-one>
+
+		<list name="Exam_res_id" cascade="save-update">
+			<key column="Std1_id"></key>
+			<list-index column="Std_idx"></list-index>
+			<one-to-many class="com.vo.Exam_result" />
+		</list>
+
+	
+
+	</class>
+</hibernate-mapping>

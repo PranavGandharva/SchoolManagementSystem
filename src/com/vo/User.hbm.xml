@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.vo.User">
+		<id name="id" column="Id" type="int">
+			<generator class="native"></generator>
+		</id>
+
+
+		<property name="username" column="UserName" type="string"></property>
+		<property name="password" column="Password" type="string"></property>
+        <property name="usertype" column="UserType" type="int"></property>
+
+		<many-to-one name="student" column="studentId" unique="true" cascade="save-update"/>
+		<many-to-one name="teacher" column="teacherId" unique="true" cascade="save-update"/>
+
+
+	</class>
+
+</hibernate-mapping>
