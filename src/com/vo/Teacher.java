@@ -1,5 +1,8 @@
 package com.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Teacher {
 
 	private int id;
@@ -7,6 +10,8 @@ public class Teacher {
 	private String lastname;
 	private String phonenumber;
 	private String email;
+	private List notification= new ArrayList<>();
+	
 
 	public int getId() {
 		return id;
@@ -46,5 +51,13 @@ public class Teacher {
 
 	public void setPhonenumber(String phonenumber) {
 		this.phonenumber = phonenumber;
+	}
+
+	public List getNotification() {
+		return notification;
+	}
+
+	public void setNotification(List notification) {
+		this.notification = notification;
 	}
 }

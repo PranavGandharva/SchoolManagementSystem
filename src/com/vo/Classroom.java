@@ -9,7 +9,7 @@ public class Classroom {
 	private List grade_id;
 	private String name;
 	private List teacher_id;
-	private List student_id;
+
 
 	public int getId() {
 		return id;
@@ -51,12 +51,5 @@ public class Classroom {
 		this.teacher_id = teacher_id;
 	}
 
-	public List getStudent_id() {
-		return student_id;
-	}
-
-	public void setStudent_id(List student_id) {
-		this.student_id = student_id;
-	}
 
 }

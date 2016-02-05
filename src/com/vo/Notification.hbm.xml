@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+	<class name="com.vo.Notification" >
+		<id name="id" column="Id" type="int">
+			<generator class="native"></generator>
+		</id>
+<!-- <one-to-one name="student" class="com.vo.Student"  cascade="save-update" ></one-to-one> -->
+<!-- <one-to-one name="teacher" class="com.vo.Teacher"  cascade="save-update" ></one-to-one> -->
+
+		<many-to-one name="student" column="Student_Id" cascade="save-update"
+			 class="com.vo.Student"></many-to-one>
+		<many-to-one name="teacher" column="teacher_Id" cascade="save-update"
+			 class="com.vo.Teacher"></many-to-one>
+
+		<property name="Remark" column="Remarks" type="string"></property>
+		<property name="date" column="Noti_date" type="date" ></property>
+		<property name="read" column="Noto_read" type="boolean"></property>
+
+
+	</class>
+</hibernate-mapping>

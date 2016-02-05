@@ -44,12 +44,14 @@ public class UserDao {
     	return (User) ret.get(0);
     } else return null;
 	    
-	}	
+	}
+	
+	
 	
 	
 	public static void main(String[] args) {
         new Configuration().configure().buildSessionFactory();
-        new UserDao().getByUser("pranav");   
-      
+      //  new UserDao().getByUser("pranav");   
+    //  new UserDao().getById(1);
 		   	}
 }

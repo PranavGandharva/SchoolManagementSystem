@@ -3,19 +3,23 @@ package com.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
 
 import com.vo.Classroom;
+import com.vo.Student;
 
 
 
 public class ClassDao {
 	public static SessionFactory factory;
+	
 	
 public boolean	valid(String name, String year){
 	//Classroom cr = new Classroom();

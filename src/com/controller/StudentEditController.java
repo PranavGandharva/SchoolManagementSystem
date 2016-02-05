@@ -36,7 +36,7 @@ public class StudentEditController extends HttpServlet {
 		    List list=  sd.select();
 		    request.setAttribute("List", list);
 	    
-		 	response.sendRedirect("/user/Student");
+		 	response.sendRedirect("Student/form");
 		    
 			
 		}else{

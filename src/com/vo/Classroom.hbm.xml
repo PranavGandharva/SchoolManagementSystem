@@ -9,24 +9,19 @@
 			<generator class="native"></generator>
 		</id>
 
-		<list name="grade_id" cascade="save-update">
+		<list name="grade_id" cascade="save-update" lazy="false">
 			<key column="classroom_id"></key>
 			<list-index column="cr_idx"></list-index>
 			<one-to-many class="com.vo.Grade" />
 		</list>
 
-		<list name="teacher_id" cascade="save-update">
+		<list name="teacher_id" cascade="save-update" lazy="false">
 			<key column="t_id"></key>
 			<list-index column="idx_teacher"></list-index>
 			<many-to-many class="com.vo.Teacher" />
 
 		</list>
 
-		<list name="student_id" cascade="save-update">
-			<key column="student_id"></key>
-			<list-index column="idx_student"></list-index>
-			<one-to-many class="com.vo.Student" />
-		</list>
 
 
 		<property name="year" column="Year2" type="string" unique="true"></property>

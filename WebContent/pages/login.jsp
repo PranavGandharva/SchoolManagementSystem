@@ -64,6 +64,7 @@
                             
                                 <div class="form-group">
                                     <input class="form-control" placeholder="User-name" name="username" >
+                                    
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password">

@@ -14,5 +14,12 @@
 		<property name="phonenumber" column="Phno" type="string"></property>
 		<property name="email" column="Email" type="string"></property>
 
+<list name="notification" cascade="save-update">
+	<key column="noti_id"></key>
+	<list-index column="noti_idx"></list-index>
+	<one-to-many class="com.vo.Notification"/>
+</list>
+
+
 	</class>
 </hibernate-mapping>

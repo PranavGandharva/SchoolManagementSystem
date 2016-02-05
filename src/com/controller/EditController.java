@@ -34,7 +34,6 @@ public class EditController extends HttpServlet {
 
 		
 //	System.out.println("-" + id + "-");
-		System.out.println(submit);
 		
 
 		if (submit != null && submit.equals("operation")) {
@@ -43,7 +42,7 @@ public class EditController extends HttpServlet {
 			List<Classroom> list = cd.select();
 	    	request.setAttribute("List", list);
 	    	
-	    	response.sendRedirect("/user/home");
+	    	response.sendRedirect("user/home");
 	    	
 		}
 		else{	

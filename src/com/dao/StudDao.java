@@ -1,18 +1,33 @@
 package com.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import com.vo.Student;
 
 public class StudDao {
 	public static SessionFactory factory;	
+
+	public List<Student> jsonData(int id){
+	Student std= new Student();
+		
+	Session session = GetSession.getSession();
+	Criteria cr=session.createCriteria(Student.class);
+	
+    List<Student> list=	cr.add(Restrictions.eq("student_id.id", id)).list();
+	
+    
+	return list;
+	}
+	
 	
 	public void delete(int id) {
 		System.out.println("delere");
@@ -116,10 +131,10 @@ public class StudDao {
 	
 	
 	public static void main(String[] args) {
-		factory = new Configuration().configure().buildSessionFactory();
-		
-        new StudDao().getId(1);
-        new StudDao().delete(2);
+	factory = new Configuration().configure().buildSessionFactory();
+	
+//        new StudDao().getId(1);
+//        new StudDao().delete(2);
 		//new StudDao().update(2,"raju", "kapoor", "kjh", "50%","5456213");
 	}
 

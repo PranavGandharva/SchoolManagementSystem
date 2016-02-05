@@ -23,6 +23,7 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 
+        <mapping resource="com/vo/Notification.hbm.xml"/>
 		<mapping resource="com/vo/User.hbm.xml"/>
 		<mapping resource="com/vo/Classroom.hbm.xml"/>
 		<mapping resource="com/vo/Course.hbm.xml" />

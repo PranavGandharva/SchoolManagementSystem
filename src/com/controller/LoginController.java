@@ -25,34 +25,36 @@ public class LoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String logout=request.getParameter("logout");
-		
+		String id= request.getParameter("id");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");		
 		
 		UserDao ud = new UserDao();
      	User user = ud.getByUser(username);
-	
+      
      	
-     	if(logout!=null){
+	   	
+        	if(logout!=null){
      		System.out.println("logout");
-     		
      		session.invalidate();
-     		response.sendRedirect("/user/home");
+     		response.sendRedirect("teacher/form");
      		
      		return ;
      	}
-     	
+     	session.setAttribute("user", user);
+     	session.setAttribute("usertype", user.getUsertype()==0 ? "Teacher" : "Student");
      	session.setAttribute("username", user.getUsername());
 		session.setAttribute("password", user.getPassword());
+		
 		
 		
 if(username!=null && user.getPassword().equals(password)){
 		
 		if(user.getUsertype()==Constant.USER_TYPE_STUDENT){
-			response.sendRedirect("/Student"); 
+			response.sendRedirect("user/Student"); 
 			return ;
 		}else if(user.getUsertype()==Constant.USER_TYPE_TEACHER){
-			response.sendRedirect("/user/home");
+			response.sendRedirect("teacher/form");
 			return;
 		}
 	      

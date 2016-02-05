@@ -20,7 +20,23 @@ import com.vo.Student;
 public class StudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	  String id=request.getParameter("id");
+    	  StudDao sd = new StudDao();
+    	  
+    	if(request.getParameter("delete")!=null && request.getParameter("delete")!="" && request.getParameter("delete").equals("trash")){
+    		System.out.println("delete operation");
+		   		sd.delete(Integer.parseInt(id));
+		  List 	list= sd.select();
+		   	    request.setAttribute("List", list);
+		   	    
+		   	    response.sendRedirect("Student/form");
+		   	}
+		
     
+    
+    }
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -47,21 +63,16 @@ public class StudentController extends HttpServlet {
 			}
 
 			if (insert != null && insert != "") {
+				
+				
 				sd.insert(firstname, lastname, email, attendance, photo, phone,Integer.parseInt("enroll"));
 				list = sd.select();
 				request.setAttribute("List", list);
 			
-			    response.sendRedirect("/user/Student");
+			    response.sendRedirect("Student/form");
 		}
 		   	  
-		   	if(request.getParameter("delete")!=null && request.getParameter("delete")!="" && request.getParameter("delete").equals("trash")){
-		   		sd.delete(Integer.parseInt(id));
-		   		list= sd.select();
-		   	    request.setAttribute("List", list);
-		   	    
-		   	    response.sendRedirect("/user/Student");
-		   	}
-		
+		   
 		}
 	}
 

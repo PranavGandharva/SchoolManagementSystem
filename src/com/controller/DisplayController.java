@@ -36,8 +36,9 @@ public class DisplayController extends HttpServlet {
 //		}
 		System.out.println("String str:"+str);
 		
+		
 		if(str.equals("/CheckValidClassroomAdd")){
-			
+			System.out.println("check valid classroom add");
 			
 			request.setAttribute("opToPerform", "check_bef_add_class" );
 	        RequestDispatcher rd=request.getRequestDispatcher("/ClassroomController");
@@ -60,6 +61,7 @@ public class DisplayController extends HttpServlet {
 		
 		}
 		
+	
 		
 	}
 

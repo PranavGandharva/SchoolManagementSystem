@@ -40,6 +40,8 @@ public class ClassroomController extends HttpServlet {
     request.setAttribute("List", list);
    
     if(request.getAttribute("opToPerform")!=null && request.getAttribute("opToPerform").equals("check_bef_add_class")) {
+//    System.out.println("vvalidation");
+    	
     	if(cd.valid(name, year)){
     
     		response.getWriter().write("valid");
@@ -58,7 +60,7 @@ public class ClassroomController extends HttpServlet {
     	list = cd.select();
     	request.setAttribute("List", list);
     	
-    	response.sendRedirect("/user/home");
+    	response.sendRedirect("user/home");
     	
 //    	RequestDispatcher rd = request.getRequestDispatcher("/home");
 //    	rd.forward(request, response);
@@ -74,7 +76,7 @@ public class ClassroomController extends HttpServlet {
 		    list = cd.select();
 	    	request.setAttribute("List", list);
 	    				
-			response.sendRedirect("/user/home");
+			response.sendRedirect("user/home");
 	    	
 	}
 	}

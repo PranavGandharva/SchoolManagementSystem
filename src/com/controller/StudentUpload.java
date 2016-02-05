@@ -132,7 +132,7 @@ public class StudentUpload extends HttpServlet {
 								}
 //						System.out.println("std"+std);
 						sd.multipart(std);
-						response.sendRedirect("/user/Student");
+						response.sendRedirect("user/Student");
 					}
 					catch (FileUploadException e) {
 						// TODO Auto-generated catch block
