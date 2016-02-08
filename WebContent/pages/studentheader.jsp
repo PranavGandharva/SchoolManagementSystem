@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 <link
 	href="<%=request.getContextPath()%>/bower_components/bootstrap/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -180,43 +185,14 @@
 				<ul class="dropdown-menu dropdown-alerts">
 					<li><a href="#">
 							<div>
-								<i class="fa fa-comment fa-fw"></i> New Comment <span
+								<i class="fa fa-comment fa-fw"></i> Remarks <c:forEach var="row" items="${UserNotification}">
+									<c:out value="${row.remark }"></c:out>
+									</c:forEach><span
 									class="pull-right text-muted small">4 minutes ago</span>
+								
 							</div>
 					</a></li>
-					<li class="divider"></li>
-					<li><a href="#">
-							<div>
-								<i class="fa fa-twitter fa-fw"></i> 3 New Followers <span
-									class="pull-right text-muted small">12 minutes ago</span>
-							</div>
-					</a></li>
-					<li class="divider"></li>
-					<li><a href="#">
-							<div>
-								<i class="fa fa-envelope fa-fw"></i> Message Sent <span
-									class="pull-right text-muted small">4 minutes ago</span>
-							</div>
-					</a></li>
-					<li class="divider"></li>
-					<li><a href="#">
-							<div>
-								<i class="fa fa-tasks fa-fw"></i> New Task <span
-									class="pull-right text-muted small">4 minutes ago</span>
-							</div>
-					</a></li>
-					<li class="divider"></li>
-					<li><a href="#">
-							<div>
-								<i class="fa fa-upload fa-fw"></i> Server Rebooted <span
-									class="pull-right text-muted small">4 minutes ago</span>
-							</div>
-					</a></li>
-					<li class="divider"></li>
-					<li><a class="text-center" href="#"> <strong>See
-								All Alerts</strong> <i class="fa fa-angle-right"></i>
-					</a></li>
-				</ul> <!-- /.dropdown-alerts --></li>
+									</ul> <!-- /.dropdown-alerts --></li>
 			<!-- /.dropdown -->
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>

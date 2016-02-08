@@ -15,8 +15,10 @@ import com.dao.ClassDao;
 import com.dao.StudDao;
 import com.dao.TeachDao;
 import com.vo.Classroom;
+import com.vo.Notification;
 import com.vo.Student;
 import com.vo.Teacher;
+import com.vo.User;
 
 @WebServlet("/StudentDisp")
 public class StudentDisp extends HttpServlet {
@@ -97,8 +99,14 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
            rd.forward(request, response);		
 		}
 
-		else if (str.equals("/student/home")) {
-
+		else if (str.equals("/Student/home")) {
+			Student std= new Student();
+			
+			User user=(User)session.getAttribute("user");
+			
+			session.setAttribute("UserNotification",user.getStudent().getNotification());
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("../student/studentFragment.jsp");
 			rd.forward(request, response);
 		} else if (str.equals("/user/home")) {
@@ -111,9 +119,9 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 			rd.forward(request, response);
 
 		}
-		else if(str.equals("/sendNotification")){
+		else if(str.equals("/teacher/sendNotification")){
 			
-		RequestDispatcher rd=	request.getRequestDispatcher("/NotificationController");
+		RequestDispatcher rd=	request.getRequestDispatcher("/teacher/NotificationController");
 		rd.forward(request, response);
 		}
 		

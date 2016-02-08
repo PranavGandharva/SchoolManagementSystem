@@ -1,6 +1,10 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +16,11 @@ import javax.servlet.http.HttpSession;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.hibernate.Session;
 
+import com.dao.NotiDao;
 import com.dao.StudDao;
+import com.vo.Notification;
+import com.vo.Student;
+import com.vo.Teacher;
 import com.vo.User;
 
 @WebServlet("/teacher/NotificationController")
@@ -31,16 +39,33 @@ public class NotificationController extends HttpServlet {
 	String operation=request.getParameter("operation");
 		HttpSession session= request.getSession();
 	
-		if (operation.equals("fetchStudentForClass")) {
+		if (operation!=null && operation.equals("fetchStudentForClass")) {
 			StudDao sd = new StudDao();
 
 			ObjectMapper om = new ObjectMapper();
 			om.writer().writeValue(response.getOutputStream(), sd.jsonData(Integer.parseInt(Id)));
 
-		} else if (submit != null && submit != "") {
-			String str1[] = str.split(",");
+		}  if (submit != null && submit != "") {
+		System.out.println("hi");
+		String str1[] =str.split(",");
+        
 		System.out.println("userId:"+session.getAttribute("user"));
-			
+		
+		for (String string : str1) {
+				Notification nt = new Notification();
+				NotiDao nd= new NotiDao();
+				Student student = nd.getNotiByEnroll(Integer.parseInt(string));
+				student.getNotification().add(nt);
+				nt.setStudent(student);
+				nt.setRemark(remark);
+				nt.setDate(new Date());
+			    nt.setRead(false);
+			    nt.setUser((User)(session.getAttribute("user")));
+			    
+			    nd.insert(nt,student);
+			 
+			   
+			}
          
 			}
 		

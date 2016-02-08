@@ -25,7 +25,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form action="<%=request.getContextPath() %>/sendNotification" method="get" id="modalform">
+								<form name="form"  id="modalform">
 
 									<div class="form-group">
 										<label>Select:</label> <select id="id" name="id"
@@ -37,8 +37,9 @@
 										</select>
 
 									</div>
-
-									<div class="col-lg-6">
+                            	   </form>
+                            	<form name="form1">
+                            		<div class="col-lg-6">
 										<div class="panel panel-default">
 											<div class="panel-heading">Student Table</div>
 											<div class="panel-body">
@@ -64,24 +65,26 @@
 											</div>
 										</div>
 									</div>
+                         </form>
 							</div>
-
+                           
+                       <form  action="<%=request.getContextPath() %>/teacher/sendNotification" name="form2" method="get">
 							<div class="form-group">
 										<label>Remarks:</label> <input class="form-control"
 											name="remark" placeholder="Enter text">
-											<input type="hidden" name="str"/>
+											<input type="hidden" name="str" id="str"/>
 									</div>
 									<div class="form-group">
-										<input type="button" name="submit_but" id="submit_but" value="Submit" class="btn btn-default">
+										<input type="submit" name="submit_but" id="submit_but" value="Submit" onclick="submitform()" class="btn btn-default">
 
 									</div>
-								</form>
+							
+		                       </form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
 			
 											
@@ -92,7 +95,8 @@
 		$("#submit_but").on("click", function() {
 			$("tbody tr.item input:checkbox:checked").each(function() { // if <tr> exist
 				str += $(this).parent().parent().find("td:eq(1)").html()+",";
-
+          
+			$("#str").val(str);
 			});
 			
 		});
@@ -138,7 +142,15 @@ success:function(data){
 	}
 });
 }
+
+function submitform(){
 	
+
+	document.getElementsByName("form1").submit();
+	document.getElementsByName("form2").submit();
+	document.getElementsByName("form").submit();
+	
+}
 	
 </script>
 

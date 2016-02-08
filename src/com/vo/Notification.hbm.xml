@@ -14,9 +14,9 @@
 <!-- <one-to-one name="teacher" class="com.vo.Teacher"  cascade="save-update" ></one-to-one> -->
 
 		<many-to-one name="student" column="Student_Id" cascade="save-update"
-			 class="com.vo.Student"></many-to-one>
-		<many-to-one name="teacher" column="teacher_Id" cascade="save-update"
-			 class="com.vo.Teacher"></many-to-one>
+			 class="com.vo.Student" lazy="false"></many-to-one>
+		<many-to-one name="user" column="user_Id" cascade="save-update"
+			 class="com.vo.User" lazy="false"></many-to-one>
 
 		<property name="Remark" column="Remarks" type="string"></property>
 		<property name="date" column="Noti_date" type="date" ></property>

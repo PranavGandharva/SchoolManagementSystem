@@ -24,7 +24,7 @@ public class StudDao {
 	
     List<Student> list=	cr.add(Restrictions.eq("student_id.id", id)).list();
 	
-    
+    session.close();
 	return list;
 	}
 	

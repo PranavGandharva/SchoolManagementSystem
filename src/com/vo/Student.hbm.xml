@@ -18,19 +18,19 @@
 		<property name="photo" column="Photo" type="string"></property>
 
 		<one-to-one name="parents_Id" class="com.vo.Parent"
-			cascade="save-update"></one-to-one>
+			cascade="save-update" lazy="false"></one-to-one>
 
 		<list name="Exam_res_id" cascade="save-update" lazy="false">
 			<key column="Std1_id"></key>
 			<list-index column="Std_idx"></list-index>
 			<one-to-many class="com.vo.Exam_result" />
 		</list>
-		
-        <list name="notification" cascade="save-update" lazy="false">
-        <key column="Noti_id"></key>
-        <list-index column="noti_idx"></list-index>
-        <one-to-many class="com.vo.Notification"/>
-        </list>
+
+	<list name="notification" cascade="save-update" lazy="false">
+	<key column="Noti_id"></key>
+	<list-index column="noti_idx"></list-index>
+	<one-to-many class="com.vo.Notification"/>
+	</list>
 	
 		
 		<many-to-one class="com.vo.Classroom" column="stud_id"  cascade="save-update" name="student_id" lazy="false"/>

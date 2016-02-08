@@ -14,7 +14,7 @@
 		<property name="phonenumber" column="Phno" type="string"></property>
 		<property name="email" column="Email" type="string"></property>
 
-<list name="notification" cascade="save-update">
+<list name="notification" cascade="save-update" lazy="false">
 	<key column="noti_id"></key>
 	<list-index column="noti_idx"></list-index>
 	<one-to-many class="com.vo.Notification"/>
