@@ -84,7 +84,7 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 
 		}else if(str.equals("/teacher/form")){
 			TeachDao td = new TeachDao();
-		    List<Teacher>	list=td.select();
+		    List<Teacher>list=td.select();
 			request.setAttribute("List",list);
 			
 	        RequestDispatcher rd=request.getRequestDispatcher("/pages/teacherform.jsp");
@@ -100,8 +100,7 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 		}
 
 		else if (str.equals("/Student/home")) {
-			Student std= new Student();
-			
+			   	
 			User user=(User)session.getAttribute("user");
 			
 			session.setAttribute("UserNotification",user.getStudent().getNotification());

@@ -13,7 +13,7 @@
 <!-- <one-to-one name="student" class="com.vo.Student"  cascade="save-update" ></one-to-one> -->
 <!-- <one-to-one name="teacher" class="com.vo.Teacher"  cascade="save-update" ></one-to-one> -->
 
-		<many-to-one name="student" column="Student_Id" cascade="save-update"
+		<many-to-one name="student" column="Student_Id" cascade="save-update" 
 			 class="com.vo.Student" lazy="false"></many-to-one>
 		<many-to-one name="user" column="user_Id" cascade="save-update"
 			 class="com.vo.User" lazy="false"></many-to-one>

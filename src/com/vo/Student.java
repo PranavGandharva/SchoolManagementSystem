@@ -23,7 +23,7 @@ public class Student {
 	private int enrollment;
 	private String photo;
 	private Classroom student_id;
-    private List<Notification> notification= new ArrayList<>();
+    private List notification= new ArrayList<>();
 	private List Exam_res_id = new ArrayList<>();
 
 	public int getId() {
@@ -111,10 +111,10 @@ public class Student {
 	public void setStudent_id(Classroom student_id) {
 		this.student_id = student_id;
 	}
-	public List<Notification> getNotification() {
+	public List getNotification() {
 		return notification;
 	}
-	public void setNotification(List<Notification> notification) {
+	public void setNotification(List notification) {
 		this.notification = notification;
 	}
 }

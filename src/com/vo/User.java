@@ -58,6 +58,12 @@ public class User {
 		this.teacher = teacher;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", usertype=" + usertype
+				+ ", student=" + student + ", teacher=" + teacher + "]";
+	}
+
 	
 
 }

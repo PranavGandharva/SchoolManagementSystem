@@ -20,7 +20,7 @@ public class NotiDao {
 	
 		Session session =GetSession.getSession();
         Criteria cr=session.createCriteria(Student.class);
-	    List<Student>list=	cr.add(Restrictions.eq("enrollment", enroll)).list();
+	    List<Student>list=cr.add(Restrictions.eq("enrollment", enroll)).list();
 	    if(list.size()>0){
 	    	return list.get(0);
 	    }
@@ -33,20 +33,22 @@ public class NotiDao {
 
 	public void insert(Notification nt,Student student) {
 
-	Session session = GetSession.getSession();
-    Transaction tx=session.beginTransaction();
-    session.merge(nt);
-    session.merge(student);
-	
-	tx.commit();
-	session.close();
-	
-	}	
+		
+		Session session = GetSession.getSession();
+		Transaction tx = session.beginTransaction();
+
+		session.merge(nt);;
+		session.merge(student);
+		
+	    tx.commit();
+		session.close();
+
+	}
 
 	public static void main(String[] args) {
      new Configuration().configure().buildSessionFactory();
 	
-    
+      
 
 	}
 	

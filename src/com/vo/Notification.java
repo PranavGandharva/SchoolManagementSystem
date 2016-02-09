@@ -60,4 +60,11 @@ public class Notification {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	@Override
+	public String toString() {
+		return "Notification [id=" + id + ", student=" + student + ", user=" + user + ", Remark=" + Remark + ", date="
+				+ date + ", read=" + read + "]";
+	}
+
 }

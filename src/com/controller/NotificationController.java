@@ -3,6 +3,7 @@ package com.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -52,17 +53,24 @@ public class NotificationController extends HttpServlet {
 		System.out.println("userId:"+session.getAttribute("user"));
 		
 		for (String string : str1) {
-				Notification nt = new Notification();
+			    Notification nt = new Notification();
 				NotiDao nd= new NotiDao();
 				Student student = nd.getNotiByEnroll(Integer.parseInt(string));
-				student.getNotification().add(nt);
-				nt.setStudent(student);
-				nt.setRemark(remark);
+			    
+			  
+                   
+			    System.out.println("NOTIFICATION:"+"  "+student.getNotification().add(nt));
+                System.out.println("CLASS NAMe:"+"   "+student.getNotification().getClass());    
+                System.out.println("ROW :"+"  "+student.getNotification().get(0));;
+                System.out.println("SiZE:"+"   "+student.getNotification().size());;
+                
+                nt.setStudent(student);
+                nt.setRemark(remark);
 				nt.setDate(new Date());
 			    nt.setRead(false);
 			    nt.setUser((User)(session.getAttribute("user")));
-			    
 			    nd.insert(nt,student);
+			    
 			 
 			   
 			}
