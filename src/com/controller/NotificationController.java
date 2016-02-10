@@ -56,10 +56,9 @@ public class NotificationController extends HttpServlet {
 			    Notification nt = new Notification();
 				NotiDao nd= new NotiDao();
 				Student student = nd.getNotiByEnroll(Integer.parseInt(string));
+			    	
 			    
-			  
-                   
-			    System.out.println("NOTIFICATION:"+"  "+student.getNotification().add(nt));
+				System.out.println("NOTIFICATION:"+"  "+student.getNotification().add(nt));
                 System.out.println("CLASS NAMe:"+"   "+student.getNotification().getClass());    
                 System.out.println("ROW :"+"  "+student.getNotification().get(0));;
                 System.out.println("SiZE:"+"   "+student.getNotification().size());;
@@ -71,7 +70,7 @@ public class NotificationController extends HttpServlet {
 			    nt.setUser((User)(session.getAttribute("user")));
 			    nd.insert(nt,student);
 			    
-			 
+			   
 			   
 			}
          

@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class NotiDao {
 	
 		Session session =GetSession.getSession();
         Criteria cr=session.createCriteria(Student.class);
-	    List<Student>list=cr.add(Restrictions.eq("enrollment", enroll)).list();
+	    List<Student>list=cr.add(Restrictions.eq("enrollment", enroll)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 	    if(list.size()>0){
 	    	return list.get(0);
 	    }
@@ -32,15 +33,17 @@ public class NotiDao {
 	}
 
 	public void insert(Notification nt,Student student) {
-
+		
 		
 		Session session = GetSession.getSession();
-		Transaction tx = session.beginTransaction();
+	    session.beginTransaction();
 
-		session.merge(nt);;
+       
 		session.merge(student);
 		
-	    tx.commit();
+	     
+		
+	    session.getTransaction().commit();
 		session.close();
 
 	}
