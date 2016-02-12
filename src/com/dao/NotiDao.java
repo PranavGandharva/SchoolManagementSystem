@@ -16,45 +16,51 @@ import com.vo.Student;
 import com.vo.Teacher;
 
 public class NotiDao {
-	
-	public Student getNotiByEnroll(int enroll){
-	
-		Session session =GetSession.getSession();
-        Criteria cr=session.createCriteria(Student.class);
-	    List<Student>list=cr.add(Restrictions.eq("enrollment", enroll)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-	    if(list.size()>0){
-	    	return list.get(0);
-	    }
-		
-	    session.close();
-	    return null;
-	
-		
+
+	public Student getNotiByEnroll(int enroll) {
+
+		Session session = GetSession.getSession();
+		Criteria cr = session.createCriteria(Student.class);
+		List<Student> list = cr.add(Restrictions.eq("enrollment", enroll))
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+
+		session.close();
+		return null;
+
 	}
 
-	public void insert(Notification nt,Student student) {
-		
-		
-		Session session = GetSession.getSession();
-	    session.beginTransaction();
+	public Notification Notify(int id) {
 
-       
-		session.merge(student);
+		Session session = GetSession.getSession();
+		Criteria cr = session.createCriteria(Notification.class);
+		List<Notification> list = cr.add(Restrictions.eq("student.id", id)).list();
+		if (list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+
+	}
+
+	public Notification insert(Notification nt) {
+
+		Session session = GetSession.getSession();
+		Transaction tx=session.beginTransaction();
+
+		session.merge(nt);
 		
-	     
-		
-	    session.getTransaction().commit();
+
+		tx.commit();
 		session.close();
+		return nt;
 
 	}
 
 	public static void main(String[] args) {
-     new Configuration().configure().buildSessionFactory();
-	
-      
+		new Configuration().configure().buildSessionFactory();
 
 	}
-	
 
-		
 }

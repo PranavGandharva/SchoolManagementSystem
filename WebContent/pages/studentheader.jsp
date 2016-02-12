@@ -183,16 +183,16 @@
 					<i class="fa fa-caret-down"></i>
 			</a>
 				<ul class="dropdown-menu dropdown-alerts">
-					<li><a href="#">
+    		<li><a href="#">
 							<div>
 								<i class="fa fa-comment fa-fw"></i> Remarks <c:forEach var="row" items="${UserNotification}">
-									<c:out value="${row.remark }"></c:out>
-									</c:forEach><span
-									class="pull-right text-muted small">4 minutes ago</span>
+									<c:out value="${row.remark}"></c:out>
+									</c:forEach><span class="pull-right text-muted small">4 minutes ago</span>
 								
 							</div>
-					</a></li>
-									</ul> <!-- /.dropdown-alerts --></li>
+						
+				</a></li>
+									</ul> <!--/.dropdown-alerts> </li>
 			<!-- /.dropdown -->
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>

@@ -1,4 +1,4 @@
-package com.controller;
+  package com.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -106,7 +106,7 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 			session.setAttribute("UserNotification",user.getStudent().getNotification());
 			
 			
-			RequestDispatcher rd = request.getRequestDispatcher("../student/studentFragment.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/pages/studentheader.jsp");
 			rd.forward(request, response);
 		} else if (str.equals("/user/home")) {
 
