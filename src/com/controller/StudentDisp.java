@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dao.ClassDao;
+import com.dao.NotiDao;
 import com.dao.StudDao;
 import com.dao.TeachDao;
 import com.vo.Classroom;
@@ -100,11 +101,13 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 		}
 
 		else if (str.equals("/Student/home")) {
-			   	
-			User user=(User)session.getAttribute("user");
-			
-			session.setAttribute("UserNotification",user.getStudent().getNotification());
-			
+		NotiDao nd = new NotiDao();			
+			User user = (User) session.getAttribute("user");
+         	
+		    request.setAttribute("countNotification", nd.readNotification());
+			request.setAttribute("notification", user.getStudent().getNotification());
+			System.out.println("NOTIFICATIONL:==" + user.getStudent().getNotification());
+					
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/pages/studentheader.jsp");
 			rd.forward(request, response);
@@ -122,10 +125,23 @@ System.out.println("REQ" + request.getRequestURL() + " STR: " + str);
 			
 		RequestDispatcher rd=	request.getRequestDispatcher("/teacher/NotificationController");
 		rd.forward(request, response);
+		}else if(str.equals("/Student/Notification")){
+			
+        RequestDispatcher rd=request.getRequestDispatcher("/StudentNotification");
+        rd.forward(request, response);
+		}
+		else if(str.equals("/Student/dash")){
+		
+			
+	    RequestDispatcher rd=request.getRequestDispatcher("/Student/Dash");
+		rd.forward(request, response);	
 		}
 		
 
 	}
+		
+	
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

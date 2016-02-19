@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-		
+	
+	
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
@@ -59,4 +60,7 @@
 			</div>
 			<!-- /.sidebar-collapse -->
 		</div>
-		<!-- /.navbar-static-side --> </nav>
+		<!-- /.navbar-static-side --> 
+		
+
+		

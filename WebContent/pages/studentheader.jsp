@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ page import="java.io.*,java.util.*,java.sql.*"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 
 <link
 	href="<%=request.getContextPath()%>/bower_components/bootstrap/dist/css/bootstrap.min.css"
@@ -46,11 +47,14 @@
 	src="<%=request.getContextPath()%>/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script
 	src="<%=request.getContextPath()%>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-
-
+	
+<%@ include file="studentsidebar.jsp" %>
+		
 <!-- Navigation -->
-		<nav class="navbar navbar-default navbar-static-top" role="navigation"
-			style="margin-bottom: 0">
+	
+<div id="wrapper">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation"
+		style="margin-bottom: 0">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
 				data-target=".navbar-collapse">
@@ -60,7 +64,9 @@
 			</button>
 			<a class="navbar-brand" href="index.html">School Management
 				System</a>
+				
 		</div>
+			
 		<!-- /.navbar-header -->
 
 		<ul class="nav navbar-top-links navbar-right">
@@ -90,7 +96,7 @@
 					</a></li>
 					<li class="divider"></li>
 					<li><a href="#">
-							<div>
+						<div>
 								<strong>John Smith</strong> <span class="pull-right text-muted">
 									<em>Yesterday</em>
 								</span>
@@ -177,34 +183,132 @@
 								All Tasks</strong> <i class="fa fa-angle-right"></i>
 					</a></li>
 				</ul> <!-- /.dropdown-tasks --></li>
+					
 			<!-- /.dropdown -->
-			<li class="dropdown"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> <i class="fa fa-bell fa-fw"></i>
-					<i class="fa fa-caret-down"></i>
+			
+			<li class="dropdown"  data-toggle="modal" onclick="remarks()">
+			
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+			<i class="fa fa-bell fa-fw"></i> 
+			<span class = "badge" style="background-color:#d43f3a;height:1.7rem;width:2rem;border-radius: 50%;"><%=request.getAttribute("countNotification")%></span><i class="fa fa-caret-down"></i>
 			</a>
+			
 				<ul class="dropdown-menu dropdown-alerts">
-    		<li><a href="#">
-							<div>
-								<i class="fa fa-comment fa-fw"></i> Remarks <c:forEach var="row" items="${UserNotification}">
+					<c:forEach var="row" items="${notification}">
+						<li><a href="#">
+								<div>
+									<i class="fa fa-comment fa-fw"></i> Remarks
 									<c:out value="${row.remark}"></c:out>
-									</c:forEach><span class="pull-right text-muted small">4 minutes ago</span>
-								
-							</div>
-						
-				</a></li>
-									</ul> <!--/.dropdown-alerts> </li>
+									<span class="pull-right text-muted small"></span>
+							
+								</div>
+
+
+						</a></li>
+					</c:forEach>
+				</ul> 
+			
+				<!--/.dropdown-alerts>
+
 			<!-- /.dropdown -->
 			<li class="dropdown"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <i class="fa fa-user fa-fw"></i>
 					<i class="fa fa-caret-down"></i>
 			</a>
+
 				<ul class="dropdown-menu dropdown-user">
 					<li><a href="#"><i class="fa fa-user fa-fw"></i>${sessionScope.usertype}</a></li>
-					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-					</li>
+					<li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a></li>
 					<li class="divider"></li>
-					<li><a href="<%= request.getContextPath()%>/LoginController?logout=true"><i class="fa fa-sign-out fa-fw"></i>Logout</a></li>
-				</ul> <!-- /.dropdown-user --></li>
-			<!-- /.dropdown -->
+					<li><a
+						href="<%=request.getContextPath()%>/LoginController?logout=true"><i
+							class="fa fa-sign-out fa-fw"></i>Logout</a></li>
+				</ul> <!-- /.dropdown-user -->
+				
+				
+				
+				</li>
 		</ul>
+</nav>
+<%@ include file="studentDashboard.jsp"%>
+			<!-- /.dropdown -->
+	<div class="modal fade" id="myModal" role="dialog" >
+		<div class="modal-dialog">
 
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">Student Details</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-lg-6">
+											<form action="">
+  												<div class="col-lg-18">
+										<div class="panel panel-default">
+											<div class="panel-heading">Student Table</div>
+											<div class="panel-body">
+												<div class="panel-body">
+													<div class="dataTable_wrapper">
+														<table
+															class="table table-striped table-bordered table-hover"
+															id="dataTables-example">
+															<thead>
+																<tr>
+																	<th>Remark</th>
+																	<th>Date</th>
+																	
+																</tr>
+															</thead>
+															<tbody>
+
+															</tbody>
+
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	
+<script type="text/javascript">
+	function remarks() {
+				$.ajax({
+            method:"GET",
+			url:"<%=request.getContextPath()%>/Student/Notification?StudentNotification=remarks",
+	        success:function(data){
+	    	//alert(data);
+    	var formdata= data.split(",");
+
+//     	$.each(formdata, function(key, value) { 
+//     		 alert(key[0].value); 
+//     		});
+    		  $("<tr><td>"+formdata[0]+"</td>"+"<td>"+formdata[1]+"</td></tr>"+"<tr><td>"+formdata[2]+"</td>"+"<td>"+formdata[3]+"</td></tr>").appendTo('tbody');
+    	 $('#myModal').modal();	
+			
+	        }		
+	});
+		
+	}
+</script>
+
+	
